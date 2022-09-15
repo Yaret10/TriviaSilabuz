@@ -112,8 +112,12 @@ while iniciar_trivia == True:
   
   #Condicional:
   while respuesta_2 not in ("a", "b", "c", "d", "x"):
-      respuesta_2 -= input(
-          "Debes responder unas de las alternativas; a, b, c, d. Ingresa nuevamente tu respuesta"
+
+    if respuesta_2 == "":
+        respuesta_2 = input("Coloque una respuesta: ")
+    else:
+        respuesta_2 = input(
+          "Debes responder unas de las alternativas; a, b, c, d. Ingresa nuevamente tu respuesta: "
       )
   #Respuesta Incorrecta
   if respuesta_2 == "a":
