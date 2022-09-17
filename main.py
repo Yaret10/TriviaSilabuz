@@ -2,19 +2,7 @@ import random
 import time
 import os
 
-#Reglamento de la trivia:
-  #1ra pregunta 
-    #RC = 10 puntos + (0,3) puntos aleatorios
-    #RI = -(5 puntos + (0,3) puntos aleatorios)
-  #2da pregunta
-    #RC = 10 puntos + (0,5) puntos aleatorios
-    #RI = -(5 puntos + (0,5) puntos aleatorios)
-  #3da pregunta
-    #RC = 10 puntos + (0,7) puntos aleatorios
-    #RI = -(5 puntos + (0,7) puntos aleatorios)
-  #4da pregunta
-    #RC = 10 puntos + (0,10) puntos aleatorios
-    #RI = -(5 puntos + (0,10) puntos aleatorios)
+
 # +5 puntos por Responder "x"
 #--------variables a usar----
 #colores
@@ -46,8 +34,25 @@ print(
 )
 print(MAGENTA+"Tu puntaje actual es de:", puntaje, "\n"+RESET)
 
-input("Presiona enter para empezar!")
+
+print("Reglamento de la trivia:")
+print("  1ra pregunta") 
+print("    RCorrect = 10 puntos + (0,3) puntos aleatorios")
+print("    RIncorrect = -(5 puntos + (0,3) puntos aleatorios)")
+print("  2da pregunta")
+print("    RCorrect = 10 puntos + (0,5) puntos aleatorios")
+print("    RIncorrect = -(5 puntos + (0,5) puntos aleatorios)")
+print("  3da pregunta")
+print("    RCorrect = 10 puntos + (0,7) puntos aleatorios")
+print("    RIncorrect = -(5 puntos + (0,7) puntos aleatorios)")
+print("  4da pregunta")
+print("    RCorrect = 10 puntos + (0,10) puntos aleatorios")
+print("    RIncorrect = -(5 puntos + (0,10) puntos aleatorios)")
+print(RED+"--Hay una respuesta con puntos Bonus, averigualo con tu eXperiencia-- :)"+RESET)
+
+input("\nPresiona enter para empezar!\n")
 os.system('clear') #Limpiar Pantalla
+
 
 #--funcion para el for(tiempo de carga antes de empezar)
 def tiempoCarga():
@@ -66,6 +71,7 @@ while iniciar_trivia == True:
   puntaje = 0
   
   print("Intento Nro: ",intentos_trivia,"\n")
+  
   #Pregunta 1-----------------------------------------------
   print(GREEN+"1)¿Cual es el RIO mas largo del mundo? \n"+RESET)
   print("a) Río Nilo")
@@ -145,7 +151,7 @@ while iniciar_trivia == True:
       print(
           BLUE+"Excelente", participante,
           "¿Sabías que? China cuenta con 1.412 millones de habitanes aproximadamente\n"+RESET
-      ) 
+      )
   
   print(MAGENTA+"Puntos:", puntaje,RESET) #Muestra puntaje
   print("\n")
