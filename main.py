@@ -145,7 +145,7 @@ while iniciar_trivia == True:
       print(
           BLUE+"Excelente", participante,
           "¿Sabías que? China cuenta con 1.412 millones de habitanes aproximadamente\n"+RESET
-      )
+      ) 
   
   print(MAGENTA+"Puntos:", puntaje,RESET) #Muestra puntaje
   print("\n")
