@@ -23,6 +23,7 @@ intentos_trivia = 0 #Almacena cauntos intentos lleva la trivia
 print(
     GREEN+"Pruba tus conocimientos resolviendo estas siemples preguntas \nde cultura general de nuestra TRIVIA y conoce tu nivel. \n"+RESET
 )
+
 #--Ingresa el nombre del participante 
 participante = input("Escribe tu nombre:")
 print("\n")
@@ -47,8 +48,10 @@ print("    RCorrect = 10 puntos + (0,7) puntos aleatorios")
 print("    RIncorrect = -(5 puntos + (0,7) puntos aleatorios)")
 print("  4da pregunta")
 print("    RCorrect = 10 puntos + (0,10) puntos aleatorios")
-print("    RIncorrect = -(5 puntos + (0,10) puntos aleatorios)")
-print(RED+"--Hay una respuesta con puntos Bonus, averigualo con tu eXperiencia-- :)"+RESET)
+print("    RIncorrect = -(5 puntos + (0,10) puntos aleatorios)\n")
+print(RED+"--Si no sabes la respuesta, hay una letra comodín con puntos Bonus-- :)"+RESET)
+print(RED+"--Te doy una pista, esta entre l, m, n, o, p, q-- :)"+RESET)
+print(RED+"--Se restatará puntos si no le atinas-- :)"+RESET)
 
 input("\nPresiona enter para empezar!\n")
 os.system('clear') #Limpiar Pantalla
@@ -67,6 +70,10 @@ os.system('clear') #Limpiar pantalla
 
 #Trivia-----
 while iniciar_trivia == True:
+  
+  listaLetras = ["l","m","n","o","p","q"]
+  repuestaComodin = random.choice(listaLetras)
+  
   intentos_trivia +=1
   puntaje = 0
   
@@ -83,7 +90,7 @@ while iniciar_trivia == True:
   
   #Condicional:
   #--Es necesario colocar una respuesta para continuar
-  while respuesta_1 not in ("a", "b", "c", "d","x"):
+  while respuesta_1 not in ("a", "b", "c", "d","x","l","m","n","o","p","q"):
       respuesta_1 = input("Coloque una respuesta:")
   #--Condicional para mostrar un msj segun su respuesta
   if respuesta_1 == "b":
@@ -92,14 +99,19 @@ while iniciar_trivia == True:
       print(BLUE+"Excelente", participante, "respuesta correcta!")
       print("¿Sabías que? mide 6992 km de longitud\n"+RESET)
   #--Msj secreto
-  elif respuesta_1 == "x":
+  elif respuesta_1 == repuestaComodin:
       puntaje += 5
       print(participante, "Este es un mensaje secreto! No le digas a nadie que ganaste 5 puntos\n") 
+      
   #Respuesta Incorrecta
   else:
     #--Se le resta 5 puntos si se equivoca 
       puntaje -= random.randint(0, 3) + 5
-      print(RED+"Lo sentimos", participante, "Respuesta Incorrecta!\n"+RESET) 
+      print(RED+"Lo sentimos", participante, "Respuesta Incorrecta!"+RESET) 
+    
+      if respuesta_1 == ("l"or"m"or"n"or"o"or"p"or"q"):
+       print("No le atinaste al comodín\n")
+      
     
   print(MAGENTA+"Puntos:", puntaje,RESET) #Muestra puntaje
   print("\n")
@@ -108,6 +120,7 @@ while iniciar_trivia == True:
   
   
   #Pregunta 2---------------------------------------------
+  repuestaComodin = random.choice(listaLetras)#genera respuesta comodí aleatoria
   print(GREEN+"2)¿Cúal es el pais con más habitantes del mundo? \n"+RESET)
   print("a) Rusia")
   print("b) EEUU")
@@ -117,7 +130,7 @@ while iniciar_trivia == True:
   respuesta_2 = input("\nRESPUESTA: ")
   
   #Condicional:
-  while respuesta_2 not in ("a", "b", "c", "d", "x"):
+  while respuesta_2 not in ("a", "b", "c", "d", "x","l","m","n","o","p","q"):
 
     if respuesta_2 == "":
         respuesta_2 = input("Coloque una respuesta: ")
@@ -141,10 +154,15 @@ while iniciar_trivia == True:
       print(RED+"Incorrecto", participante,
             "La India tiene 1.389 millones de habitantes aproximadamente\n"+RESET)
   
-  elif respuesta_2 == "x":
+  elif respuesta_2 == repuestaComodin:
       puntaje += 5
       print(participante, "Este es un mensaje secreto! No le digas a nadie que ganaste 5 puntos\n")
     
+  elif respuesta_2 == ("l"or"m"or"n"or"o"or"p"or"q"):
+      puntaje -= random.randint(0, 5) + 5
+      print(RED+"Lo sentimos", participante, "Respuesta Incorrecta!"+RESET)
+      print("No le atinaste al comodín\n")
+      
   #Respuesta Correcta
   else:
       puntaje += random.randint(0, 5) + 10
@@ -159,6 +177,7 @@ while iniciar_trivia == True:
   time.sleep(2)
   
   #Pregunta 3----------------------------------------------
+  repuestaComodin = random.choice(listaLetras)#genera respuesta comodí aleatoria
   print(GREEN+"Pregunta con puntos especiales\n")
   print("3)¿Cuantos años duró la segunda guerra mundial? \n"+RESET)
   print("a) 10 años")
@@ -169,7 +188,7 @@ while iniciar_trivia == True:
   respuesta_3 = input("\nRESPUESTA: ")
   
   #Condicional:
-  while respuesta_3 not in ("a", "b", "c", "d","x"):
+  while respuesta_3 not in ("a", "b", "c", "d","x","l","m","n","o","p","q"):
       respuesta_3 = input("Coloque una respuesta:")
   #Respuesta Incorrecta
   if respuesta_3 == "a":
@@ -187,9 +206,14 @@ while iniciar_trivia == True:
     puntaje = puntaje + 5
     print(RED+"Lo sentimos", participante, "Respuesta Incorrecta! pero estuviste cerca\n"+RESET)
   
-  elif respuesta_3 == "x":
+  elif respuesta_3 == repuestaComodin:
       puntaje += 5
       print(participante, "Este es un mensaje secreto! No le digas a nadie que ganaste 5 puntos\n")
+
+  elif respuesta_3 == ("l"or"m"or"n"or"o"or"p"or"q"):
+      puntaje -= random.randint(0, 7) + 5
+      print(RED+"Lo sentimos", participante, "Respuesta Incorrecta!"+RESET)
+      print("No le atinaste al comodín\n")
   #Respuesta correcta
   else:
       puntaje += random.randint(0, 7) + 10
@@ -206,6 +230,7 @@ while iniciar_trivia == True:
   time.sleep(2)
   
   #pregunta 4 ------------------------------------------------
+  repuestaComodin = random.choice(listaLetras)#genera respuesta comodí aleatoria
   print(GREEN+"4)¿Cúal fué el primer telefono inteligente en salir a la venta? \n"+RESET)
   print("a) Ericsson GS88")
   print("b) Siemens S10")
@@ -215,7 +240,7 @@ while iniciar_trivia == True:
   respuesta_4 = input("\nRESPUESTA: ")
   
   #Condicional:
-  while respuesta_4 not in ("a", "b", "c", "d","x"):
+  while respuesta_4 not in ("a", "b", "c", "d","x","l","m","n","o","p","q"):
       respuesta_4 = input("Coloque una respuesta:")
     
   #Respuesta correcta
@@ -226,14 +251,17 @@ while iniciar_trivia == True:
           "¿Sabías que? Se presentó el 15 de aagosto de 1996 en una fería en Alemanía\n"+RESET
       )
   #Mensaje secreto
-  elif respuesta_4 == "x":
+  elif respuesta_4 == repuestaComodin:
       puntaje += 5
       print(participante, "Este es un mensaje secreto! No le digas a nadie que ganaste 5 puntos\n")
   
   #Respuesta incorrecta
   else:
       puntaje -= random.randint(0, 10) + 10
-      print(RED+"Lo sentimos", participante, "Respuesta Incorrecta!\n"+RESET)
+      print(RED+"Lo sentimos", participante, "Respuesta Incorrecta!"+RESET)
+
+      if respuesta_4 == ("l"or"m"or"n"or"o"or"p"or"q"):
+       print("No le atinaste al comodín\n")
   
   print(MAGENTA+"Puntos:", puntaje,RESET) #Muestra puntaje 
   print("\n")
